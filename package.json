@@ -1,25 +1,25 @@
 {
-  "name": "1023-backend",
+  "name": "1023b-backend-novo",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "npm i && tsc",
+    "dev": "tsx watch src/index.ts",
+    "build": "npm install && tsc",
     "start": "node dist/index.js",
-    "dev": "tsx src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "description": "",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.3"
+  },
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "^24.3.0",
-    "express": "^5.1.0",
     "tsx": "^4.20.4",
     "typescript": "^5.9.2"
-  },
-  "dependencies": {
-    "dotenv": "^17.2.1",
-    "mysql2": "^3.14.3"
   }
 }
