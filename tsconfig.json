@@ -7,12 +7,12 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
-    "target": "esnext",
-    //"types": [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
+    "module": "commonjs",
+    "target": "es2020",
+    "lib": ["es2020"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     // and npm install -D @types/node
 
     // Other Outputs
