@@ -24,6 +24,7 @@ app.get('/', async (req, res) => {
         res.status(500).send("DBPORT is not defined");
         return
     }
+    
     try {
         const conn = await mysql.createConnection({
             host: process.env.DBHOST,
@@ -40,10 +41,47 @@ app.get('/', async (req, res) => {
             return
         }
         const error = err as Error
-        res.status(500).send("Erro ao conectar no banco de dados" + error.message)
+        res.status(500).send("Erro ao conectar no banco de dados " + error.message)
     }
 
 })
+
+app.get('/produtos', async (req, res) => {
+    try {
+        const conn = await mysql.createConnection({
+            host: process.env.DBHOST,
+            user: process.env.DBUSER,
+            password: process.env.DBPASSWORD,
+            database: process.env.DBDATABASE,
+            port: Number(process.env.DBPORT)
+        });
+        const [rows] = await conn.query('SELECT * FROM produtos');
+        res.send(rows)
+    }
+    catch (err) {
+        if(err instanceof Error === false){
+            res.status(500).send("erro q n sabo")
+            return
+        }
+        const error = err as Error
+        res.status(500).send("Erro ao conectar no banco de dados " + error.message)
+    }
+})
+
 app.listen(8000, () => {
     console.log('Server is running on port 8000');
 })
+
+//criar rota get que pega e retorna lista dos produtos do banco de dados do aiven, deve ter id, nome, preco, urlfoto, descricao
+//deve ser uma array a resposta 
+//crie o codigo sql para criar a tabela de produtos
+/*
+CREATE TABLE produtos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    urlfoto VARCHAR(255) NOT NULL,
+    descricao TEXT
+);
+
+*/
