@@ -36,7 +36,7 @@ app.get('/', async (req, res) => {
         res.send(`
             <div style="font-family: Arial, sans-serif; padding: 20px;">
                 <p>Conectado, clique nesse botão para ver os produtos</p>
-                <button style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                <button onclick="window.location.href='/produtos' "style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
                     Produtos
                 </button>
             </div>
