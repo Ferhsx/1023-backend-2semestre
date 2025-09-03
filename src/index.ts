@@ -33,7 +33,14 @@ app.get('/', async (req, res) => {
             database: process.env.DBDATABASE,
             port: Number(process.env.DBPORT)
         });
-        res.send(process.env.DBHOST)
+        res.send(`
+            <div style="font-family: Arial, sans-serif; padding: 20px;">
+                <p>Conectado, clique nesse botão para ver os produtos</p>
+                <button style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    Produtos
+                </button>
+            </div>
+        `)
     }
     catch (err) {
         if(err instanceof Error === false){
