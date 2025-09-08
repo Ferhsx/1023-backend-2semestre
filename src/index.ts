@@ -61,27 +61,6 @@ app.get('/', async (req, res) => {
 
 })
 
-app.post ('/produtos', async (req, res) => {
-    try{
-        const conn = await mysql.createConnection({
-            host: process.env.DBHOST,
-            user: process.env.DBUSER,
-            password: process.env.DBPASSWORD,
-            database: process.env.DBDATABASE,
-            port: Number(process.env.DBPORT)
-        });
-        const [rows] = await conn.query('INSERT INTO produtos (nome, preco, urlfoto, descricao) VALUES (?, ?, ?, ?)', [req.body.nome, req.body.preco, req.body.urlfoto, req.body.descricao]);
-        res.send(rows)
-    }
-    catch (err) {
-        if(err instanceof Error === false){
-            res.status(500).send("erro q n sabo")
-            return
-        }
-        const error = err as Error
-        res.status(500).send("Erro ao conectar no banco de dados " + error.message)
-    }
-})
 
 app.get('/produtos', async (req, res) => {
     try {
