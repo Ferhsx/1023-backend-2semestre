@@ -2,9 +2,9 @@ import express, { Request, Response } from 'express'
 import 'dotenv/config'
 import { MongoClient } from 'mongodb'
 
-const client = new MongoClient(process.env.MONGO_URI!)
+const client = new MongoClient(process.env.MONGOURI!)
 await client.connect()
-const db = client.db(process.env.MONGO_DB!)
+const db = client.db(process.env.MONGODB!)
 
 const app = express()
 //Esse middleware faz com que o 
